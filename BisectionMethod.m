@@ -1,15 +1,15 @@
-function  result = BisectionMethod(xi,xf,f,index, es, rt)
-    iter = 1; %iteration variable
+function  result = BisectionMethod(xi,xf,f, es)
+    iter = 0; %iteration variable
     xl = xi; % lower bound
     xu = xf; % upper bound
     xc = (xi + xf)/2; %middle bound
     xcold = xc; % xcold for holding previous middle bound
-    ea = abs((xc-xcold)/xc) * 100; %approximate percent relative error calculation
-    et = abs((rt-xc)/rt)*100; %true relative error calculation
-    fprintf("iter       xl      xu      xc      ea      et\n");
-    fprintf("%0     %.9f    %.9f    %.9f    %.9f    %.9f\n",  xl, xu, xc, ea, et);
+    ea = 100; %approximate percent relative error calculation
+    fprintf("iter       xl      xu      xc      ea\n");
+    fprintf("%d     %.9f    %.9f    %.9f    %.9f    \n", iter, xl, xu, xc, ea);
+    iter = 1;
    
-    while(ea>es || iter< index)
+    while(ea>es)
     xcold = xc;
     
     
@@ -25,8 +25,8 @@ function  result = BisectionMethod(xi,xf,f,index, es, rt)
 
     xc = (xl + xu)/ 2;
     ea = abs((xc-xcold)/xc) * 100;
-    et = abs((rt-xc)/rt)*100;
-    fprintf("%d     %.9f    %.9f    %.9f    %.9f    %.9f\n", iter, xl, xu, xc, ea, et);
+    
+    fprintf("%d     %.9f    %.9f    %.9f    %.9f    \n", iter, xl, xu, xc, ea);
     
     
     iter = iter+1;
